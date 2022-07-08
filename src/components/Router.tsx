@@ -9,17 +9,22 @@ import Profile from "../routes/Profile";
 export default function AppRouter({
   isLoggedIn,
   userObj,
+  refreshUser,
 }: {
   isLoggedIn: any;
   userObj: any;
+  refreshUser: any;
 }) {
   return (
     <Router>
-      {isLoggedIn && <Nav />}
+      {isLoggedIn && <Nav userObj={userObj} />}
       <Routes>
         {isLoggedIn ? (
           <>
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={<Profile userObj={userObj} refreshUser={refreshUser} />}
+            />
             <Route path="/" element={<Home userObj={userObj} />} />
           </>
         ) : (

@@ -10,7 +10,6 @@ import {
 import { authService } from "fbase";
 
 const Auth = () => {
-  const auth = getAuth(authService);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newAccount, setNewAccount] = useState(true);
@@ -30,9 +29,13 @@ const Auth = () => {
     try {
       let data;
       if (newAccount) {
-        data = await createUserWithEmailAndPassword(auth, email, password);
+        data = await createUserWithEmailAndPassword(
+          authService,
+          email,
+          password
+        );
       } else {
-        data = await signInWithEmailAndPassword(auth, email, password);
+        data = await signInWithEmailAndPassword(authService, email, password);
       }
       console.log(data);
     } catch (error: any) {
@@ -50,7 +53,7 @@ const Auth = () => {
     } else if (name === "github") {
       provider = new GithubAuthProvider();
     }
-    const data = await signInWithPopup(auth, provider);
+    const data = await signInWithPopup(authService, provider);
   };
   return (
     <div>
