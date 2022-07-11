@@ -1,4 +1,4 @@
-import { dbService } from "fbase";
+import { dbService } from "../fbase";
 import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import Nweet from "components/Nweet";
