@@ -8,14 +8,17 @@ export default function Nav({ userObj }: { userObj: any }) {
   }
   return (
     <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/profile">{userObj.displayName}의 Profile</Link>
-        </li>
-      </ul>
+      <div>
+        <img alt={"새"} src="bird1.png" />
+        <div className={`flex justify-between mt-4`}>
+          <div>
+            <Link to="/">Home</Link>
+          </div>
+          <div>
+            <Link to="/profile">{userObj.displayName}의 Profile</Link>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 }

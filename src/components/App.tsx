@@ -26,7 +26,7 @@ function App() {
   };
 
   return (
-    <>
+    <body className={`mt-24 mx-auto flex flex-col justify-center items-center`}>
       {init ? (
         <AppRouter
           isLoggedIn={isLoggedIn}
@@ -36,7 +36,7 @@ function App() {
       ) : (
         "Initializing..."
       )}
-    </>
+    </body>
   );
 }
 

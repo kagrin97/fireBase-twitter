@@ -34,39 +34,47 @@ const Nweet = ({ nweetObj, isOwner }: { nweetObj: any; isOwner: boolean }) => {
     setNewNweet(value);
   };
   return (
-    <div>
+    <div className={``}>
       {editing ? (
-        <>
+        <article
+          className={`bg-green-700 text-white font-bold py-2 px-4 rounded-md my-4 mx-auto`}
+        >
           <form onSubmit={onSubmit}>
             <input
               type="text"
-              placeholder="Edit your nweet"
+              placeholder="새로운 텍스트를 입력하세요."
               value={newNweet}
               required
               onChange={onChange}
+              className={`text-black rounded-md px-1`}
             />
-            <input type="submit" value="Update Nweet" />
+            <input type="submit" value="업데이트" className={`ml-2 mb-1`} />
           </form>
-          <button onClick={toggleEditing}>Cancel</button>
-        </>
+          <button onClick={toggleEditing}>취소</button>
+        </article>
       ) : (
-        <>
+        <article
+          className={`bg-green-400 text-white font-bold py-2 px-4 rounded-md my-4 mx-auto relative`}
+        >
           <h4>{nweetObj.text}</h4>
           {nweetObj.attachmentUrl && (
             <img
               src={nweetObj.attachmentUrl}
-              width="50px"
-              height="50px"
+              width="80px"
+              height="80px"
               alt="사진"
+              className={`absolute bottom-0 right-0 `}
             />
           )}
           {isOwner && (
             <>
-              <button onClick={onDeleteClick}>Delete Nweet</button>
-              <button onClick={toggleEditing}>Edit Nweet</button>
+              <button className={`mr-4`} onClick={onDeleteClick}>
+                삭제
+              </button>
+              <button onClick={toggleEditing}>수정</button>
             </>
           )}
-        </>
+        </article>
       )}
     </div>
   );

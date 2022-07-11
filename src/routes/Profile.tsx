@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { getAuth, updateProfile } from "firebase/auth";
-import { authService, dbService } from "fbase";
+import { updateProfile } from "firebase/auth";
+import { authService } from "fbase";
 
 const ProFile = ({
   userObj,
@@ -28,20 +28,31 @@ const ProFile = ({
     }
   };
   return (
-    <>
-      <form onSubmit={onSubmit}>
+    <article className={`mt-12`}>
+      <form onSubmit={onSubmit} className={`flex flex-col`}>
         <input
           onChange={onChange}
           type="text"
           placeholder="Display name"
           value={newDisplayName}
         />
-        <input type="submit" value="Update Profile" />
+        <input
+          type="submit"
+          value="이름변경"
+          className={`bg-green-400 hover:bg-green-700 text-white font-bold py-1 px-4 w-32 rounded-full my-10 mx-auto`}
+        />
       </form>
-      <Link to="/">
-        <button onClick={onLogOutClick}>Log out</button>
-      </Link>
-    </>
+      <div className={`text-center`}>
+        <Link to="/">
+          <button
+            className={`bg-green-400 hover:bg-green-700 text-white font-bold py-1 px-4 w-32 rounded-full`}
+            onClick={onLogOutClick}
+          >
+            Log out
+          </button>
+        </Link>
+      </div>
+    </article>
   );
 };
 
