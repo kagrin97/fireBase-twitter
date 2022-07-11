@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <HashRouter basename="/">
+  <HashRouter basename="/fireBase-twitter">
     <App />
   </HashRouter>
 );

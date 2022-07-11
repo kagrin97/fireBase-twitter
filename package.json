@@ -11,7 +11,6 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "firebase": "^9.8.4",
-    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
@@ -48,8 +47,9 @@
   "devDependencies": {
     "@types/uuid": "^8.3.4",
     "autoprefixer": "^10.4.7",
+    "gh-pages": "^4.0.0",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.5"
   },
-  "homepage": "https://kagrin97.github.io/fireBase-twitter"
+  "homepage": "https://kagrin97.github.io/fireBase-twitter/"
 }
