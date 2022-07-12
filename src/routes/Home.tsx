@@ -22,17 +22,15 @@ const Home = ({ userObj }: { userObj: any }) => {
   }, []);
 
   return (
-    <div>
+    <div className={`w-full max-w-xl`}>
       <NweetFactory userObj={userObj} />
-      <div>
-        {nweets.map((nweet: any) => (
-          <Nweet
-            key={nweet.id}
-            nweetObj={nweet}
-            isOwner={nweet.creatorId === userObj.uid}
-          />
-        ))}
-      </div>
+      {nweets.map((nweet: any) => (
+        <Nweet
+          key={nweet.id}
+          nweetObj={nweet}
+          isOwner={nweet.creatorId === userObj.uid}
+        />
+      ))}
     </div>
   );
 };

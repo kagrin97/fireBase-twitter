@@ -21,7 +21,9 @@ export default function NweetFactory({ userObj }: { userObj: any }) {
         text: nweet,
         createdAt: Date.now(),
         creatorId: userObj.uid,
+        nickname: userObj.displayName,
         attachmentUrl,
+        photoUrl: userObj.photoURL,
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (error) {
@@ -53,42 +55,50 @@ export default function NweetFactory({ userObj }: { userObj: any }) {
     fileInput.current.value = "";
   };
   return (
-    <form onSubmit={onSubmit} className={`flex flex-col mt-4 mx-auto`}>
-      <input
-        value={nweet}
-        onChange={onChange}
-        type="text"
-        placeholder="채팅을 남겨보세요!"
-        maxLength={120}
-      />
-      <input
-        type="file"
-        accept="image/*"
-        onChange={onFileChange}
-        ref={fileInput}
-        className={`file:mr-4 file:mt-4 file:py-2 file:px-4
-        file:rounded-full file:border-0
-        file:text-sm file:font-semibold
-        file:bg-green-400 file:text-white
-        hover:file:bg-green-700`}
-      />
-      <div className={`flex`}>
+    <form
+      onSubmit={onSubmit}
+      className={`flex flex-col mt-4 mx-auto text-center`}
+    >
+      <div>
+        <input
+          value={nweet}
+          onChange={onChange}
+          type="text"
+          placeholder="채팅을 남겨보세요!"
+          maxLength={90}
+          className={`px-4 py-1 rounded-md`}
+        />
         <input
           type="submit"
           value="채팅 전송!"
-          className={`bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 w-32 rounded-full my-4 mx-auto`}
+          className={`bg-green-400 hover:bg-green-700 text-white font-bold py-1 px-2 w-24 rounded-full my-4 ml-4`}
         />
-        {attachment && (
-          <div className={`relative`}>
-            <img src={attachment} width="80px" height="80px" alt="이미지" />
-            <button
-              className={`bg-green-400 hover:bg-green-700 text-white font-bold w-12 rounded-full absolute bottom-0 right-0`}
-              onClick={onClearAttachment}
-            >
-              취소
-            </button>
-          </div>
-        )}
+      </div>
+      <div className={`flex`}>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={onFileChange}
+          ref={fileInput}
+          className={`file:mr-4 file:mt-4 file:py-2 file:px-4
+        file:rounded-full file:border-0
+        file:text-sm file:font-semibold
+        file:bg-green-400 file:text-white
+        hover:file:bg-green-700 `}
+        />
+        <div className={`flex`}>
+          {attachment && (
+            <div className={`relative`}>
+              <img src={attachment} width="80px" height="80px" alt="이미지" />
+              <button
+                className={`bg-green-400 hover:bg-green-700 text-white font-bold w-6 h-6 rounded-full absolute top-0 right-0`}
+                onClick={onClearAttachment}
+              >
+                x
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </form>
   );
