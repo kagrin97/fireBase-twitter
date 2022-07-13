@@ -13,6 +13,7 @@
   + 채팅
    
     - addDoc()으로 채팅과 사진을 db에 저장할수있다.
+    ![채팅](https://user-images.githubusercontent.com/75124028/178646506-19c81b49-ab95-4944-9861-968b6306435e.gif)
     - onSnapshot()으로 실시간 doc을 가져와 모든 채팅 목록을 가져온다.
     - deleteDoc()으로 자신이 작성한 채팅만 삭제할수있다.
     - updateDoc()으로 자신이 작성한 채팅을 수정할수있다.
@@ -38,7 +39,7 @@
 <div style="display: flex;">
   
     <div>채팅 기능</div>
-   ![채팅](https://user-images.githubusercontent.com/75124028/178646506-19c81b49-ab95-4944-9861-968b6306435e.gif)
+   
   
   
     <div>채팅 기능</div>
