@@ -1,5 +1,6 @@
-# firebase를 이용해서 채팅,사진을 저장하고 가져오는 앱입니다.
+# firebase를 이용해 채팅앱을 만들었습니다.
 
+주소 : https://firebase-twitter.vercel.app/
 
 ## 사용 기술
 
