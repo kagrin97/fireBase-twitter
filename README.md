@@ -7,8 +7,6 @@
 - backend, db : firebase
 - deploy : vercel
 
-*** 
-
 ## 구현한 기능
 
   + 채팅
