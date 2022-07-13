@@ -36,12 +36,12 @@
  ## 영상
 
 <div style="display: flex;">
-  <div>
+  
     <div>채팅 기능</div>
-    ![채팅](https://user-images.githubusercontent.com/75124028/178646506-19c81b49-ab95-4944-9861-968b6306435e.gif)
-  </div>
-  <div>
+   ![채팅](https://user-images.githubusercontent.com/75124028/178646506-19c81b49-ab95-4944-9861-968b6306435e.gif)
+  
+  
     <div>채팅 기능</div>
-    ![채팅](https://user-images.githubusercontent.com/75124028/178646506-19c81b49-ab95-4944-9861-968b6306435e.gif)
-  </div>
+   ![채팅](https://user-images.githubusercontent.com/75124028/178646506-19c81b49-ab95-4944-9861-968b6306435e.gif)
+  
 </div>
