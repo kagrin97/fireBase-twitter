@@ -1,46 +1,30 @@
-# Getting Started with Create React App
+# firebase를 이용해서 채팅,사진을 저장하고 가져오는 앱입니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+***
 
-## Available Scripts
+1. 사용 기술
 
-In the project directory, you can run:
+- frontEnd : React
+- backend, db : firebase
+- deploy : vercel
 
-### `npm start`
+2. 구현한 기능
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+  2.1 채팅
+    - addDoc()으로 채팅과 사진을 db에 저장할수있다.
+    - onSnapshot()으로 실시간 doc을 가져와 모든 채팅 목록을 가져온다.
+    - deleteDoc()으로 자신이 작성한 채팅만 삭제할수있다.
+    - updateDoc()으로 자신이 작성한 채팅을 수정할수있다.
+    
+  2.2 사용자 인증
+    - onAuthStateChanged()로 현재 로그인 상태인지 체크한다.
+    - createUserWithEmailAndPassword()로 이메일 회원가입 할수있다.
+    - signInWithEmailAndPassword()로 이메일 로그인한다.
+    - GoogleAuthProvider()로 구글 사용자 정보를 가져온다.
+    - GithubAuthProvider()로 깃헙 사용자 정보를 가져온다.
+    - signInWithPopup()로 공급자에 따라서 로그인 팝업창을 실행한다.
+    - signOut()으로 로그아웃 
+  
+  2.3 사용자 정보 변경
+    - updateProfile()로 사용자 이름 or 아바타사진을 변경한다.
+    
