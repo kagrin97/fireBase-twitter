@@ -5,13 +5,11 @@ import { collection, getDocs, query, updateDoc, doc } from "firebase/firestore";
 import { ref, uploadString, getDownloadURL } from "@firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 
-const ProFile = ({
-  userObj,
-  refreshUser,
-}: {
-  userObj: any;
-  refreshUser: any;
-}) => {
+import useCheckUser from "hooks/useCheckUser";
+
+const ProFile = () => {
+  const { userObj, refreshUser } = useCheckUser();
+
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
   const [photo, setPhoto] = useState<any>("");
   const fileInput: any = useRef();
