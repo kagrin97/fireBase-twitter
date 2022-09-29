@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { authService } from "../fbase";
 
 import { userObjHandler } from "util/userObjHandler";
 
 export default function Nav({ userObj }: { userObj: any }) {
-  userObjHandler.setDisplayName(userObj);
-  userObjHandler.setDefaultAvatar(userObj);
+  useEffect(() => {
+    userObjHandler.setDisplayName(userObj);
+    userObjHandler.setDefaultAvatar(userObj);
+    console.log(userObj.displayName);
+  }, [userObj.displayName]);
 
   const onLogOutClick = (event: React.MouseEvent) => {
     authService.signOut();

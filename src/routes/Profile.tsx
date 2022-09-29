@@ -1,84 +1,22 @@
-import React, { useState, useRef } from "react";
-import { updateProfile } from "firebase/auth";
-import { dbService, storageService } from "../fbase";
-import { collection, getDocs, query, updateDoc, doc } from "firebase/firestore";
-import { ref, uploadString, getDownloadURL } from "@firebase/storage";
-import { v4 as uuidv4 } from "uuid";
+import useEditProfile from "hooks/useEditProfile";
 
-import useCheckUser from "hooks/useCheckUser";
-
-const ProFile = () => {
-  const { userObj, refreshUser } = useCheckUser();
-
-  const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
-  const [photo, setPhoto] = useState<any>("");
-  const fileInput: any = useRef();
-  let NweetTextRef: any;
-
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const {
-      target: { value },
-    } = event;
-    setNewDisplayName(value);
-  };
-
-  const changeNickName = async (photoUrl: any) => {
-    const q = query(collection(dbService, "nweets"));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach(async (document) => {
-      if (document.data().creatorId === userObj.uid) {
-        NweetTextRef = doc(dbService, "nweets", `${document.id}`);
-        await updateDoc(NweetTextRef, {
-          nickname: newDisplayName,
-          photoUrl,
-        });
-      }
-    });
-  };
-
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const ok = window.confirm("프로필을 변경하시겠습니까?");
-    if (ok) {
-      if (userObj.displayName !== newDisplayName || photo !== "") {
-        if (userObj.displayName !== newDisplayName) {
-          await updateProfile(userObj, { displayName: newDisplayName });
-        }
-        let photoUrl = "";
-        if (photo !== "") {
-          const fileRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
-          const response = await uploadString(fileRef, photo, "data_url");
-          photoUrl = await getDownloadURL(response.ref);
-          await updateProfile(userObj, { photoURL: photoUrl });
-        }
-        changeNickName(photoUrl);
-        refreshUser();
-      }
-    }
-  };
-
-  const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files: any = event.target.files;
-    const theFile = files[0];
-    const reader = new FileReader();
-    reader.onloadend = (finishedEvent: any) => {
-      const result = finishedEvent.currentTarget.result;
-      setPhoto(result);
-    };
-    reader.readAsDataURL(theFile);
-  };
-
-  const onClearPhoto = () => {
-    setPhoto("");
-    fileInput.current.value = "";
-  };
+const ProFile = ({ userObj }: { userObj: any }) => {
+  const {
+    newDisplayName,
+    photo,
+    fileInput,
+    onChangeDisplayName,
+    onSubmitProfile,
+    onFileChange,
+    onClearPhoto,
+  } = useEditProfile(userObj);
   return (
     <article className={`relative`}>
-      <form onSubmit={onSubmit} className={`flex flex-col mt-4 mx-auto`}>
+      <form onSubmit={onSubmitProfile} className={`flex flex-col mt-4 mx-auto`}>
         <div className={`flex`}>
           <div className={`mr-4`}>현재 이름 : </div>
           <input
-            onChange={onChange}
+            onChange={onChangeDisplayName}
             type="text"
             placeholder="Display name"
             value={newDisplayName}

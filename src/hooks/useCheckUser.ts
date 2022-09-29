@@ -7,8 +7,9 @@ function useCheckUser() {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj, setUserObj] = useState<any>(null);
-  useEffect(() => {
-    onAuthStateChanged(authService, (user) => {
+
+  const authStateChangedHandler = async () => {
+    await onAuthStateChanged(authService, (user) => {
       if (user) {
         setIsLoggedIn(true);
         setUserObj(user);
@@ -18,7 +19,11 @@ function useCheckUser() {
       }
       setInit(true);
     });
-  }, []);
+  };
+
+  useEffect(() => {
+    authStateChangedHandler();
+  }, [userObj]);
 
   const refreshUser = async () => {
     await updateCurrentUser(authService, authService.currentUser);
