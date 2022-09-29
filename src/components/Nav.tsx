@@ -8,8 +8,7 @@ export default function Nav({ userObj }: { userObj: any }) {
   useEffect(() => {
     userObjHandler.setDisplayName(userObj);
     userObjHandler.setDefaultAvatar(userObj);
-    console.log(userObj.displayName);
-  }, [userObj.displayName]);
+  }, [userObj]);
 
   const onLogOutClick = (event: React.MouseEvent) => {
     authService.signOut();

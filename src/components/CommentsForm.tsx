@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { dbService, storageService } from "../fbase";
 import { addDoc, collection } from "firebase/firestore";
 
-export default function NweetFactory({ userObj }: { userObj: any }) {
+export default function CommentsForm({ userObj }: { userObj: any }) {
   const [nweet, setNweet] = useState("");
   const [attachment, setAttachment] = useState<any>("");
   const fileInput: any = useRef();
@@ -25,7 +25,7 @@ export default function NweetFactory({ userObj }: { userObj: any }) {
         attachmentUrl,
         photoUrl: userObj.photoURL,
       });
-      console.log("Document written with ID: ", docRef.id);
+      console.info("Document written with ID: ", docRef.id);
     } catch (error) {
       console.error("Error adding document: ", error);
     }

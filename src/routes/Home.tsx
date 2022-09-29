@@ -1,5 +1,5 @@
-import Nweet from "components/Nweet";
-import NweetFactory from "components/NweetFactory";
+import CommentsList from "components/CommentsList";
+import CommentsForm from "components/CommentsForm";
 
 import useGetNweets from "hooks/useGetNweets";
 
@@ -7,9 +7,9 @@ const Home = ({ userObj }: { userObj: any }) => {
   const { nweets } = useGetNweets();
   return (
     <div className={`w-full max-w-xl`}>
-      <NweetFactory userObj={userObj} />
+      <CommentsForm userObj={userObj} />
       {nweets.map((nweet: any) => (
-        <Nweet
+        <CommentsList
           key={nweet.id}
           nweetObj={nweet}
           isOwner={nweet.creatorId === userObj.uid}
