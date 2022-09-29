@@ -8,12 +8,12 @@ import { authService } from "../fbase";
 import AuthForm from "components/AuthForm";
 
 const Auth = () => {
-  const onGoogleClick = async () => {
-    const data = await signInWithPopup(authService, new GoogleAuthProvider());
+  const onGoogleClick = () => {
+    signInWithPopup(authService, new GoogleAuthProvider());
   };
 
-  const onGitClick = async () => {
-    const data = await signInWithPopup(authService, new GithubAuthProvider());
+  const onGitClick = () => {
+    signInWithPopup(authService, new GithubAuthProvider());
   };
   return (
     <div className={`flex flex-col w-80`}>
