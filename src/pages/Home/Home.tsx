@@ -1,5 +1,5 @@
-import CommentsList from "components/CommentsList";
-import CommentsForm from "components/CommentsForm";
+import CommentsList from "pages/Home/components/CommentsList";
+import CommentsForm from "pages/Home/components/CommentsForm";
 
 import useGetNweets from "hooks/useGetNweets";
 
