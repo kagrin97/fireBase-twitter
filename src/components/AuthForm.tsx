@@ -1,60 +1,25 @@
-import React, { useState } from "react";
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
-import { authService } from "../fbase";
+import useAuthForm from "hooks/useAuthForm";
 
 export default function AuthForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [newAccount, setNewAccount] = useState(true);
-  const [error, setError] = useState("");
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const {
-      target: { name, value },
-    } = event;
-    if (name === "email") {
-      setEmail(value);
-    } else if (name === "password") {
-      setPassword(value);
-    }
-  };
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    try {
-      let data;
-      if (newAccount) {
-        data = await createUserWithEmailAndPassword(
-          authService,
-          email,
-          password
-        );
-      } else {
-        data = await signInWithEmailAndPassword(authService, email, password);
-      }
-      console.log(data);
-    } catch (error: any) {
-      const checkMsg = /(?:\/)([a-z-]+)/;
-      setError(error.message.match(checkMsg)[1].replace(/-/gi, " "));
-    }
-  };
-  const onAccount = () => {
-    setNewAccount(true);
-  };
-  const onLogIn = () => {
-    setNewAccount(false);
-  };
+  const {
+    email,
+    password,
+    error,
+    onChangeForm,
+    onSubmitAuth,
+    onAccount,
+    onLogIn,
+  } = useAuthForm();
   return (
     <>
-      <form onSubmit={onSubmit} className={`flex flex-col mt-28`}>
+      <form onSubmit={onSubmitAuth} className={`flex flex-col mt-28`}>
         <input
           name="email"
           type="text"
           placeholder="Email"
           required
           value={email}
-          onChange={onChange}
+          onChange={onChangeForm}
         />
         <input
           name="password"
@@ -62,7 +27,7 @@ export default function AuthForm() {
           placeholder="Password"
           required
           value={password}
-          onChange={onChange}
+          onChange={onChangeForm}
           className={`my-4`}
         />
         <div className={`flex justify-between`}>
