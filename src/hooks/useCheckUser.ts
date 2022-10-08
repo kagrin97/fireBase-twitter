@@ -3,34 +3,40 @@ import { useEffect, useState } from "react";
 import { authService } from "../fbase";
 import { onAuthStateChanged, updateCurrentUser } from "firebase/auth";
 
+import { useDispatch, useSelector } from "react-redux";
+
+import { loadUserInfo } from "redux/reducers/userInfo/reducer";
+
 function useCheckUser() {
   const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userObj, setUserObj] = useState<any>(null);
+
+  let userObj = useSelector((state: any) => state);
+
+  const dispatch = useDispatch();
+
+  let isLogin = false;
+  if (userObj.accessToken) {
+    isLogin = true;
+  } else {
+    isLogin = false;
+  }
 
   const authStateChangedHandler = async () => {
-    await onAuthStateChanged(authService, (user) => {
-      if (user) {
-        setIsLoggedIn(true);
-        setUserObj(user);
-      } else {
-        setIsLoggedIn(false);
-        setUserObj(null);
-      }
-      setInit(true);
-    });
+    console.log(userObj);
+    await dispatch(loadUserInfo());
+    console.log(userObj);
+    setInit(true);
   };
 
   useEffect(() => {
     authStateChangedHandler();
-  }, [userObj]);
+  }, []);
 
   const refreshUser = async () => {
     await updateCurrentUser(authService, authService.currentUser);
-    setUserObj(authService.currentUser);
   };
 
-  return { init, isLoggedIn, userObj, refreshUser };
+  return { init, userObj, isLogin, refreshUser, authStateChangedHandler };
 }
 
 export default useCheckUser;

@@ -7,13 +7,18 @@ import {
 import { authService } from "fbase";
 import AuthForm from "pages/Auth/components/AuthForm";
 
+import useCheckUser from "hooks/useCheckUser";
+
 const Auth = () => {
-  const onGoogleClick = () => {
-    signInWithPopup(authService, new GoogleAuthProvider());
+  const { authStateChangedHandler } = useCheckUser();
+  const onGoogleClick = async () => {
+    await signInWithPopup(authService, new GoogleAuthProvider());
+    authStateChangedHandler();
   };
 
-  const onGitClick = () => {
-    signInWithPopup(authService, new GithubAuthProvider());
+  const onGitClick = async () => {
+    await signInWithPopup(authService, new GithubAuthProvider());
+    authStateChangedHandler();
   };
   return (
     <div className={`flex flex-col w-80`}>

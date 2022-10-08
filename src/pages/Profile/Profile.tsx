@@ -1,6 +1,8 @@
+import useCheckUser from "hooks/useCheckUser";
 import useEditProfile from "hooks/useEditProfile";
 
-const ProFile = ({ userObj }: { userObj: any }) => {
+const ProFile = () => {
+  const { userObj } = useCheckUser();
   const {
     newDisplayName,
     photo,

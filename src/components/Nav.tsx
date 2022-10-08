@@ -2,16 +2,20 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { authService } from "../fbase";
 
+import useCheckUser from "hooks/useCheckUser";
 import { userObjHandler } from "util/userObjHandler";
 
-export default function Nav({ userObj }: { userObj: any }) {
+export default function Nav() {
+  const { userObj, authStateChangedHandler } = useCheckUser();
+
   useEffect(() => {
     userObjHandler.setDisplayName(userObj);
     userObjHandler.setDefaultAvatar(userObj);
   }, [userObj]);
 
-  const onLogOutClick = (event: React.MouseEvent) => {
-    authService.signOut();
+  const onLogOutClick = async (event: React.MouseEvent) => {
+    await authService.signOut();
+    authStateChangedHandler();
   };
 
   return (

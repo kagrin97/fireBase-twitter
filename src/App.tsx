@@ -7,7 +7,7 @@ import Nav from "components/Nav";
 import Profile from "pages/Profile/Profile";
 
 function App() {
-  const { init, isLoggedIn, userObj } = useCheckUser();
+  const { init, isLogin } = useCheckUser();
 
   return (
     <body
@@ -15,13 +15,10 @@ function App() {
     >
       {init ? (
         <Router>
-          {isLoggedIn && <Nav userObj={userObj} />}
+          {isLogin && <Nav />}
           <Routes>
-            <Route path="/profile" element={<Profile userObj={userObj} />} />
-            <Route
-              path="/"
-              element={isLoggedIn ? <Home userObj={userObj} /> : <Auth />}
-            ></Route>
+            <Route path="/profile" element={isLogin && <Profile />} />
+            <Route path="/" element={isLogin ? <Home /> : <Auth />}></Route>
           </Routes>
         </Router>
       ) : (
