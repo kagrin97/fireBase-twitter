@@ -1,15 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { authService } from "../fbase";
 
-import { userObjHandler } from "util/userObjHandler";
-
-export default function Nav({ userObj }: { userObj: any }) {
-  useEffect(() => {
-    userObjHandler.setDisplayName(userObj);
-    userObjHandler.setDefaultAvatar(userObj);
-  }, [userObj]);
-
+export default function Nav() {
   const onLogOutClick = (event: React.MouseEvent) => {
     authService.signOut();
   };
@@ -30,27 +23,11 @@ export default function Nav({ userObj }: { userObj: any }) {
               Profile
             </Link>
           </div>
-        </div>
-
-        <div className={`flex flex-col mb-8`}>
-          <div className={`flex `}>
-            <img
-              src={userObj.photoURL}
-              alt="프로필 사진"
-              className={`rounded-full w-8 h-8 mr-4`}
-            />
-            <span>{userObj.displayName}</span>
-          </div>
-          <div className={`text-center`}>
-            <Link to="/">
-              <button
-                className={`bg-green-400 hover:bg-green-700 text-white font-bold w-20 rounded-full mt-2`}
-                onClick={onLogOutClick}
-              >
-                Log out
-              </button>
-            </Link>
-          </div>
+          <Link to="/">
+            <button className={`hover:text-yellow-500`} onClick={onLogOutClick}>
+              Log out
+            </button>
+          </Link>
         </div>
       </article>
     </nav>

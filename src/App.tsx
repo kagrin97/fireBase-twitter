@@ -15,7 +15,7 @@ function App() {
     >
       {init ? (
         <Router>
-          {isLoggedIn && <Nav userObj={userObj} />}
+          {isLoggedIn && <Nav />}
           <Routes>
             <Route path="/profile" element={<Profile userObj={userObj} />} />
             <Route

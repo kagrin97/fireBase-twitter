@@ -15,6 +15,7 @@ const CommentsList = ({
     onSubmit,
     onChange,
   } = useCommentsList(nweetObj);
+
   return (
     <div className={`max-w-xl my-4 flex w-full`}>
       {editing ? (

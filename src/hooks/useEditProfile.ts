@@ -11,7 +11,7 @@ function useEditProfile(userObj: any) {
     const {
       target: { value },
     } = event;
-    setNewDisplayName(value);
+    setNewDisplayName(() => value);
   };
 
   const onSubmitProfile = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -28,7 +28,7 @@ function useEditProfile(userObj: any) {
     const reader = new FileReader();
     reader.onloadend = (finishedEvent: any) => {
       const result = finishedEvent.currentTarget.result;
-      setPhoto(result);
+      setPhoto(() => result);
     };
     reader.readAsDataURL(theFile);
   };
