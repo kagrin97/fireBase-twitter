@@ -14,6 +14,14 @@
 - [4. 과제 진행 시 주안점](#4-프로젝트-주안점)
 - [5. 한계점 및 개선 사항](#5-한계점)
 
+### 기술 스택
+<div>
+<img src="https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black">
+<img src="https://img.shields.io/badge/Firebase-FFCA28.svg?style=for-the-badge&logo=Firebase&logoColor=black">
+<img src="https://img.shields.io/badge/Jest-C21325.svg?style=for-the-badge&logo=Jest&logoColor=white">
+<img src="https://img.shields.io/badge/RTL-E9113B.svg?style=for-the-badge&logo=RTL&logoColor=white">
+</div>
+
 ## 1. 최종 구현 영상
 
 - ### 1-1) 채팅 기능
