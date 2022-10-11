@@ -6,10 +6,11 @@ import Nav from "./Nav";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 
-test("3개의 Link에 hover:text-yellow-500가 존재하는지 확인", async () => {
+test("3개의 Link 태그에 hover하면 color가 yellow-500으로 바뀌는지 확인", async () => {
   render(<Nav />, { wrapper: BrowserRouter });
-  const HomeBtn = screen.getAllByRole("button");
-  HomeBtn.forEach((el) => {
-    expect(el).toHaveClass("hover:text-yellow-500");
+  const LinkBtn3 = screen.getAllByRole("link");
+  LinkBtn3.forEach((el) => {
+    fireEvent.mouseOver(el);
+    expect(el).toHaveStyle({ color: "yellow-500" });
   });
 });

@@ -11,7 +11,6 @@ export default function Nav() {
     <nav>
       <article>
         <img alt={"새"} src="bird1.png" />
-
         <div className={`flex justify-between my-4`}>
           <div>
             <Link className={`hover:text-yellow-500`} to="/">
