@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { authService } from "../fbase";
 
 export default function Nav() {
-  const onLogOutClick = (event: React.MouseEvent) => {
+  const onLogOutClick = () => {
     authService.signOut();
   };
 

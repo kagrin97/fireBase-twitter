@@ -1,11 +1,14 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router";
 
 import AuthApi from "api/authApi";
 
 function useEditProfile(userObj: any) {
   const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
-  const [photo, setPhoto] = useState<string>("");
+  const [photo, setPhoto] = useState<string>(userObj.photoURL);
   const fileInput: any = useRef();
+
+  const navigate = useNavigate();
 
   const onChangeDisplayName = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -18,7 +21,12 @@ function useEditProfile(userObj: any) {
     event.preventDefault();
     const ok = window.confirm("프로필을 변경하시겠습니까?");
     if (ok) {
-      AuthApi.changeProfile({ userObj, newDisplayName, photo });
+      try {
+        AuthApi.changeProfile({ userObj, newDisplayName, photo });
+        navigate("/");
+      } catch (error: any) {
+        alert(error);
+      }
     }
   };
 
