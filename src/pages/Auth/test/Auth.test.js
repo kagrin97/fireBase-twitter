@@ -1,0 +1,24 @@
+import React from "react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import Auth from "../Auth";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
+
+describe("Google, GitHub 로그인 버튼이 존재하는지", () => {
+  test("Google 로그인 버튼 존재하는지", () => {
+    render(<Auth />, { wrapper: BrowserRouter });
+    const googleLogInButton = screen.getByRole("button", {
+      name: /google/i,
+    });
+    expect(googleLogInButton).toBeInTheDocument();
+  });
+
+  test("GitHub 로그인 버튼 존재하는지", () => {
+    render(<Auth />, { wrapper: BrowserRouter });
+    const gitHubLogInButton = screen.getByRole("button", {
+      name: /github/i,
+    });
+    expect(gitHubLogInButton).toBeInTheDocument();
+  });
+});
