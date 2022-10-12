@@ -19,11 +19,11 @@ const Auth = () => {
     <div className={`flex flex-col w-80`}>
       <AuthForm />
       <div className={`flex mt-12 justify-evenly`}>
-        <button onClick={onGoogleClick}>
+        <button name="Google Log in button" onClick={onGoogleClick}>
           <img width="40" alt="google" src="google.png" />
         </button>
         or
-        <button onClick={onGitClick}>
+        <button name="GitHub Log in button" onClick={onGitClick}>
           <img width="40" alt="github" src="git.png" />
         </button>
       </div>
