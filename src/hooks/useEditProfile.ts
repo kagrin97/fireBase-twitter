@@ -4,8 +4,8 @@ import { useNavigate } from "react-router";
 import AuthApi from "api/authApi";
 
 function useEditProfile(userObj: any) {
-  const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
-  const [photo, setPhoto] = useState<string>(userObj.photoURL);
+  const [newDisplayName, setNewDisplayName] = useState(userObj?.displayName);
+  const [photo, setPhoto] = useState<string>(userObj?.photoURL);
   const fileInput: any = useRef();
 
   const navigate = useNavigate();
