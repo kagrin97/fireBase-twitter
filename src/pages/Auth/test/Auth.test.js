@@ -1,9 +1,8 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Auth from "../Auth";
-import { BrowserRouter, MemoryRouter } from "react-router-dom";
-import userEvent from "@testing-library/user-event";
+import { BrowserRouter } from "react-router-dom";
 
 describe("Google, GitHub 로그인 버튼이 존재하는지", () => {
   test("Google 로그인 버튼 존재하는지", () => {

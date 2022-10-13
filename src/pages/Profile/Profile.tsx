@@ -1,3 +1,5 @@
+import React from "react";
+
 import useEditProfile from "hooks/useEditProfile";
 
 const ProFile = ({ userObj }: { userObj: any }) => {
@@ -26,7 +28,7 @@ const ProFile = ({ userObj }: { userObj: any }) => {
         <div className={`mr-4`}>프로필 사진</div>
         <div className={`relative`}>
           <img
-            src={!photo ? userObj.photoURL : photo}
+            src={!photo ? userObj?.photoURL : photo}
             alt="사진"
             className={`rounded-full w-16 h-16`}
           />

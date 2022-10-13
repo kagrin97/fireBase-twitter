@@ -1,6 +1,12 @@
 import useCommentsForm from "hooks/useCommentsForm";
 
-export default function CommentsForm({ userObj }: { userObj: any }) {
+import { FirebaseUser } from "types/user";
+
+export default function CommentsForm({
+  userObj,
+}: {
+  userObj: FirebaseUser | null;
+}) {
   const {
     nweet,
     attachment,
@@ -17,11 +23,11 @@ export default function CommentsForm({ userObj }: { userObj: any }) {
         <div className={`mt-6`}>
           <img
             alt="프로필사진"
-            src={userObj.photoURL}
+            src={userObj!.photoURL || ""}
             className={`rounded-full w-16 h-16`}
           />
         </div>
-        <p>{userObj.displayName}</p>
+        <p>{userObj!.displayName}</p>
       </div>
       <form
         onSubmit={onSubmitComment}

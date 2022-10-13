@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { authService } from "../fbase";
 import { onAuthStateChanged, updateCurrentUser } from "firebase/auth";
 
+import { FirebaseUser } from "types/user";
+
 function useCheckUser() {
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userObj, setUserObj] = useState<any>(null);
+  const [userObj, setUserObj] = useState<FirebaseUser | null>(null);
 
   const authStateChangedHandler = async () => {
     await onAuthStateChanged(authService, (user) => {

@@ -3,7 +3,9 @@ import { dbService, storageService } from "../fbase";
 import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 
-function useCommentsList(nweetObj: any) {
+import { Comments } from "types/user";
+
+function useCommentsList(nweetObj: Comments) {
   const [editing, setEditing] = useState(false);
   const [newNweet, setNewNweet] = useState<string>(nweetObj.text);
   const NweetTextRef = doc(dbService, "nweets", `${nweetObj.id}`);
