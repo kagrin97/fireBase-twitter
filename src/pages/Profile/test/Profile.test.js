@@ -5,8 +5,6 @@ import Profile from "../Profile";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 
-const event = { target: { files: { 0: { name: "아바타 사진.png" } } } };
-
 describe("<Profile /> 컴포넌트 작동하는지", () => {
   const setStateMock = jest.fn();
   const useStateMock = (useState) => [useState, setStateMock];

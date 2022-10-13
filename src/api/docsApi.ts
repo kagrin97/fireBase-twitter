@@ -1,8 +1,10 @@
 import { dbService } from "../fbase";
 import { collection, getDocs, query, updateDoc, doc } from "firebase/firestore";
 
+import { FirebaseUser } from "types/user";
+
 interface DocsApiType {
-  userObj: any;
+  userObj: FirebaseUser;
   newDisplayName: string;
   photoUrl?: string;
   photo?: string | undefined;

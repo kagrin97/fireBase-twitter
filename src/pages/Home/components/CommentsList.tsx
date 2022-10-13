@@ -1,10 +1,12 @@
 import useCommentsList from "hooks/useCommentsList";
 
+import { Comments } from "types/user";
+
 const CommentsList = ({
   nweetObj,
   isOwner,
 }: {
-  nweetObj: any;
+  nweetObj: Comments;
   isOwner: boolean;
 }) => {
   const {

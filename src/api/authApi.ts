@@ -4,9 +4,10 @@ import { ref, uploadString, getDownloadURL } from "@firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 
 import DocsApi from "api/docsApi";
+import { FirebaseUser } from "types/user";
 
 interface AuthType {
-  userObj: any;
+  userObj: FirebaseUser;
   newDisplayName: string;
   photoUrl?: string;
   photo?: string | undefined;
@@ -25,6 +26,8 @@ class AuthApi {
         await updateProfile(userObj, { photoURL: photo });
       }
       DocsApi.updateDocs({ userObj, newDisplayName, photoUrl: photo });
+    } else {
+      throw new Error("바꾸실 사진이나 이름을 변경해주세요");
     }
   }
 }

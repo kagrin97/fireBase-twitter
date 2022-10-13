@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { dbService } from "../fbase";
 import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 
-function useGetNweets() {
-  const [nweets, setNweets] = useState<string[]>([]);
+import { Comments } from "types/user";
 
+function useGetNweets() {
+  const [nweets, setNweets] = useState<Comments[]>([]);
   useEffect(() => {
     const q = query(
       collection(dbService, "nweets"),
@@ -16,6 +17,7 @@ function useGetNweets() {
         id: doc.id,
         ...doc.data(),
       }));
+
       setNweets(nweetArr);
     });
   }, []);
